@@ -58,8 +58,9 @@ public class ArraysProgram {
 			
 		}
 		
-		System.out.println(powerArray[i]);
-		
+		for (int i = 0; i < powerArray.length; i++) {
+			System.out.println(powerArray[i]);
+		}
 		
 	}
 
