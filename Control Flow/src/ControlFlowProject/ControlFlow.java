@@ -55,33 +55,34 @@ public class ControlFlow {
 //		AsciiChars.printNumbers();
 	}
 
-//public class AsciiChars {
-//	
-//	  public static void printNumbers()
-//	  {
-//		  // TODO: print valid numeric input
-//		  int number = 0;
-//		  int numberRange = number > 48 && number < 57;
-//		  
-////		  x < 5 &&  x < 10
-//		  
-//		  for (int i=0; i<10; i++) {
-//			  char convert = (char) scanner.nextInt();
-//		  
-//		  }
-//
-//	  }
-//
-//	  public static void printLowerCase()
-//	  {
-//		  // TODO: print valid lowercase alphabetic input
-//	  }
-//
-//	  public static void printUpperCase()
-//	  {
-//		  // TODO: print valid uppercase alphabetic input
-//	  }
-//	  
-//}
+public class AsciiChars {
+
+	public static void printNumbers(){
+	  // TODO: print valid numeric input
+		int x = '0';
+	  
+		for (int i=0; i<10; i++) {
+	  
+		}
+	}
+
+	public static void printLowerCase(){
+	  // TODO: print valid lowercase alphabetic input
+		for (int i=0; i<10; i++) {
+		  
+		  
+		}
+	}
+
+	public static void printUpperCase(){
+		  // TODO: print valid uppercase alphabetic input
+		for (int i=0; i<10; i++) {
+			  
+			  
+		}
+	  
+	}
+	  
+}
 
 }

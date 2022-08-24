@@ -1,5 +1,7 @@
 package ArraysExercises;
 
+import java.util.ArrayList;
+
 public class ArraysProgram {
 
 	public static void main(String[] args) {
@@ -31,19 +33,6 @@ public class ArraysProgram {
         
         toPower(4, 2);
 
-//        int size = 4; 
-//        int power = 2;
-//        int i = 0;
-//        int[] powerArray = new int[size];
-//        
-//
-//        
-//		powerArray[i] = (int) Math.pow(size, power);
-//		
-//		System.out.println(powerArray[2]);
-//		System.out.println(powerArray[i]);
-//		System.out.println(powerArray);
-//		System.out.println(powerArray.equals());
 	}
 	
 	//PROBLEM 3
@@ -51,16 +40,14 @@ public class ArraysProgram {
 	//	to the value of "power." So, for example, if we passed in "size = 4" and "power = 2" 
 	//	to the "toPower," the method should return the following result: [0,1,4,9].
 	public static void toPower(int size, int power) {
-		int[] powerArray = new int[size];
+		ArrayList<Integer> powerArray = new ArrayList<>();
 		
-		for (int i = 0; i < powerArray.length; i++) {
-			powerArray[i] = (int) Math.pow(size, power);
+		for (int i = 0; i < size; i++) {
+			powerArray.add((int) Math.pow(i, power));
 			
 		}
 		
-		for (int i = 0; i < powerArray.length; i++) {
-			System.out.println(powerArray[i]);
-		}
+		System.out.println(powerArray);
 		
 	}
 
