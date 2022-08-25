@@ -1,77 +1,85 @@
 package classes;
 
 public class HolidayClass {
-	private String food;
-	private String song;
 	private String holiday;
+	private String food;
+	private String color;
 	
+	// empty constructor
 	public HolidayClass() {
-		// empty constructor
 	}
 	
-	public HolidayClass(String favoriteFood, String favoriteSong, String favoriteHoliday) {
-		// constructor with 3 instance variables
-		food = favoriteFood;
-		song = favoriteSong;
-		holiday = favoriteHoliday;
-		
+	// constructor that uses 2/3 variables
+	public HolidayClass(String holiday, String food) {
+		this.holiday = holiday;
+		this.food = food;
 	}
 	
-	public HolidayClass(String favoriteSong, String favoriteHoliday) {
-		// constructor with 2/3 of my variables
-		song = favoriteSong;
-		holiday = favoriteHoliday;
-		
+	// constructor that uses all 3 variables
+	public HolidayClass(String holiday, String food, String color) {
+		this.holiday = holiday;
+		this.food = food;
+		this.color = color;
 	}
 	
-	public void whatIsFavSong (String favoriteSong) {
-		// get method 1
-		System.out.println("My favorite song is " + favoriteSong);
+	// Getters
+	public String getHoliday() {
+		return this.holiday;
 	}
 	
-	public void whatIsFavFood (String favoriteFood) {
-		// get method 2
-		System.out.println("My favorite food is " + favoriteFood);		// when should i return instead
-																		// of print
+	public String getFood() {
+		return food;
 	}
 	
-	public String whatIsFavHoliday (String favoriteHoliday) {
-		// get method 3
-		return "I love the holiday " + favoriteHoliday;					// when should i return instead
-																		// of print
+	public String getColor() {
+		return color;
 	}
 	
-	// im getting confused how to set methods i think
+	// Setters
+	public void setHoliday(String holiday) {
+		this.holiday = holiday;
+	}
 	
-	public boolean isChristmasFavHoliday (String favoriteHoliday) {
-		// method that returns a boolean
-		if (favoriteHoliday == "Christmas") {
+	public void setFood(String food) {
+		this.food = food;
+	}
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	// Method that returns a Boolean
+	public Boolean isHolidayChristmas() {
+		if (holiday == "Christmas") {
 			return true;
 		} else {
 			return false;
 		}
-	
 	}
 	
-	public String thisIsFavFood (String favoriteFood) {
-		// method that returns a string
-		return "I could have " + favoriteFood + "every single day!";
+	// Method that returns a String
+	public String isFavoriteHolidayChristmas() {
+		if (isHolidayChristmas() == true) {
+			return "My favorite holiday is actually " + holiday;
+		} else {
+			return "My favorite holiday is not Christmas";
+		}
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		whatIsFavSong("Twinkle Twinkle Little Star");					// got stuck on static 
-		whatIsFavFood("Tamales");
-		whatIsFavHoliday("Christmas");
+		HolidayClass ravensChoice = new HolidayClass("Christmas", "pie", "green");
+		System.out.println(ravensChoice.isFavoriteHolidayChristmas());
+		System.out.println(ravensChoice.food);
+		System.out.println(ravensChoice.color);
 		
-		// insert set methods here 
-		
-		isChristmasFavHoliday();										// fix these 2 once you
-																		// understand set methods
-		thisIsFavFood();
-		
-		
-		
+		HolidayClass bobsChoice = new HolidayClass("Halloween", "pumpkin pie", "orange");
+		System.out.println(bobsChoice.isFavoriteHolidayChristmas());
+		System.out.println(bobsChoice.food);
+		System.out.println(bobsChoice.color);
+				
 	}
 
 }
+
+
