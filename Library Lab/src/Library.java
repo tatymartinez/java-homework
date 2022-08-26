@@ -1,50 +1,71 @@
+import java.util.ArrayList;
 
 public class Library {
     // Add the missing implementation to this class
+	// INSTANCE VARIABLES
 	String address;
-	Book[] bookCollection;
-	int numberOfBooks;
+	ArrayList<Book> list; 
 	
-	// LIBRARY CONSTRUCTOR
-	public Library(String libraryAddress) {
-		this.address = libraryAddress;
-		bookCollection = new Book[50];
-		numberOfBooks = 0;
+	// CONSTRUCTOR
+	public Library(String address) {
+		this.address = address;
+		this.list = new ArrayList<Book>(); // array<Book> means initializing a Book collection in arrayList; () holds empty argument
 	}
 	
-	// adds book to bookCollection[] & increases numberOfBooks in [] by 1
-	public void addBook(Book newBook) {
-		bookCollection[numberOfBooks] = newBook;
-		numberOfBooks++;
+	// SET METHOD
+	public void addBook(Book book) {
+		this.list.add(book);
+	}
+
+	// GET METHOD
+	// static because no new obj needs to be made to use it; void since something specific doesn't need to be returned
+	public static void printOpeningHours() { 
+		System.out.println("Libraries are open daily from 9 am to 5pm.");
 	}
 	
-	// prints openingHours; static so that it can be accessed without creating an object
-	public static void printOpeningHours() {
-		System.out.println("Libraries are open daily from 9 am to 5pm");
+	// GET METHOD
+	public void printAddress() {	// empty () because nothing needs to be input; not static because there is an object it needs to act on
+		System.out.println(this.address);
 	}
 	
-	// prints library address of Library instance; void because it NEEDS to have address printed to console.. a return value can't do that
-	public void printAddress() {
-		System.out.println(address);
-	}
-	
+	// GET METHOD
 	public void borrowBook(String title) {
-		for(int i=0; i<numberOfBooks; i++) {
-			if (bookCollection[i].getTitle().equals(title)) {
-				if (bookCollection[i].isBorrowed() == true) {
-					System.out.println("Sorry, this book is already borrowed.");
+		for (Book book: this.list) {
+			if (title.equals(book.getTitle())) {
+				if(book.isBorrowed()) {
+					System.out.println("Sorry, this book is already borrowed");
+					return;
 				} else {
-					System.out.println("You successfully " + title);
-					bookCollection[i].borrowed();
-					bookCollection[i].borrowed = true;
+					book.borrowed();
+					System.out.println("You successfully borrowed " + book.getTitle());
 					return;
 				}
-			} else {
-				System.out.println("Sorry, this book is not in our catalog");
 			}
 		}
 	}
-
+	
+	// GET METHOD
+	public void printAvailableBooks() {
+		if (this.list.isEmpty()) {
+			System.out.println("This book isn't available in the catalog");
+		}
+		
+		for (Book book: this.list) {
+			System.out.println(book.getTitle());
+			if (book.isBorrowed()) {
+				System.out.println(book.getTitle() + " is not available");
+			}
+		}
+	}
+	
+	public void returnBook(String title) {
+		for (Book book: this.list) {
+			if(title.equals(book.getTitle())) {
+				book.returned();
+				System.out.println("You successfully returned " + book.getTitle());
+			}
+		}
+	}
 	
     public static void main(String[] args) {
         // Create two libraries
@@ -60,7 +81,7 @@ public class Library {
         // Print opening hours and the addresses
         System.out.println("Library hours:");
         printOpeningHours();
-        System.out.println();
+        System.out.println();										// prints new line
 
         System.out.println("Library addresses:");
         firstLibrary.printAddress();
@@ -74,21 +95,21 @@ public class Library {
         secondLibrary.borrowBook("The Lord of the Rings");
         System.out.println();
 
-//        // Print the titles of all available books from both libraries
-//        System.out.println("Books available in the first library:");
-//        firstLibrary.printAvailableBooks();
-//        System.out.println();
-//        System.out.println("Books available in the second library:");
-//        secondLibrary.printAvailableBooks();
-//        System.out.println();
-//
-//        // Return The Lords of the Rings to the first library
-//        System.out.println("Returning The Lord of the Rings:");
-//        firstLibrary.returnBook("The Lord of the Rings");
-//        System.out.println();
-//
-//        // Print the titles of available from the first library
-//        System.out.println("Books available in the first library:");
-//        firstLibrary.printAvailableBooks();
+        // Print the titles of all available books from both libraries
+        System.out.println("Books available in the first library:");
+        firstLibrary.printAvailableBooks();
+        System.out.println();
+        System.out.println("Books available in the second library:");
+        secondLibrary.printAvailableBooks();
+        System.out.println();
+
+        // Return The Lords of the Rings to the first library
+        System.out.println("Returning The Lord of the Rings:");
+        firstLibrary.returnBook("The Lord of the Rings");
+        System.out.println();
+
+        // Print the titles of available from the first library
+        System.out.println("Books available in the first library:");
+        firstLibrary.printAvailableBooks();
     }
 } 
